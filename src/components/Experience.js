@@ -48,26 +48,22 @@ const Experience = ({children, className=''}) => {
 
                 <ul className='w-full flex flex-col items-start justify-between ml-4 xs:ml-2'>
                     <Details 
-                    position="Software Engineer"
-                    companyLink="www.google.com"
-                    company="Google"
-                    time="2022-Present"
-                    address="Mountain View"
-                    work="Google's 
-                    search engine, including improving the accuracy and relevance of search results and 
-                    developing new tools for data analysis and visualization." />
+                    position="Angular Developer"
+                    companyLink="https://dotcod.in/"
+                    company="Dotcod"
+                    time="Ang 2022 - Present"
+                    address="Bengaluru, Karnataka 560076"
+                    work="At Dotcod, I spearheaded the development of a dynamic currency conversion web application, implemented robust KYC verification systems, and engineered an intuitive online job portal application. These projects showcase my adeptness in crafting scalable, user-centric solutions that address diverse business needs while leveraging cutting-edge technologies." />
 
                     <Details 
-                    position="Software Engineer"
-                    companyLink="www.google.com"
-                    company="Google"
-                    time="2022-Present"
-                    address="Mountain View"
-                    work="Google's 
-                    search engine, including improving the accuracy and relevance of search results and 
-                    developing new tools for data analysis and visualization." />
+                    position="Angular Intern"
+                    companyLink="https://www.linkedin.com/company/sabbatech/about/"
+                    company="Sabbatech"
+                    time="April 2022 - Ang 2022"
+                    address="Chennai"
+                    work="I successfully tackled Jira tickets and mastered Angular during my tenure at sabbatech, seamlessly integrating these skills into my portfolio to demonstrate practical expertise in web development." />
 
-                    <Details 
+                    {/* <Details 
                     position="Software Engineer"
                     companyLink="www.google.com"
                     company="Google"
@@ -75,7 +71,7 @@ const Experience = ({children, className=''}) => {
                     address="Mountain View"
                     work="Google's 
                     search engine, including improving the accuracy and relevance of search results and 
-                    developing new tools for data analysis and visualization." />
+                    developing new tools for data analysis and visualization." /> */}
                 </ul>
             </div>
         </div>

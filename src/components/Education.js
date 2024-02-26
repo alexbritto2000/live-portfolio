@@ -16,7 +16,9 @@ const Details = ({ type, time, place, info }) => {
         whileInView={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring" }}
       >
-        <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg">{type}&nbsp;</h3>
+        <h3 className="capitalize font-bold text-2xl sm:text-xl xs:text-lg">
+          {type}&nbsp;
+        </h3>
 
         <span className="capitalize font-medium text-dark/75 dark:text-light/75 xs:text-sm">
           {time} | {place}
@@ -36,7 +38,9 @@ const Education = ({ children, className = "" }) => {
   });
   return (
     <div className="my-64">
-      <h2 className="font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16">Education</h2>
+      <h2 className="font-bold text-8xl mb-32 w-full text-center md:text-6xl xs:text-4xl md:mb-16">
+        Education
+      </h2>
 
       <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
         <motion.div
@@ -46,27 +50,25 @@ const Education = ({ children, className = "" }) => {
 
         <ul className="w-full flex flex-col items-start justify-between ml-4">
           <Details
-            type="Bachelor Of Science In Computer Science"
-            time="2016-2020"
-            place="Massachusetts Institute Of Technology (MIT)"
+            type="Bachelor Of Information Technology - 8.4% CGPA"
+            time="2017-2021"
+            place="JACSICE Engineering College, Nazareth."
             info="Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial 
                     Intelligence."
           />
 
           <Details
-            type="Bachelor Of Science In Computer Science"
-            time="2016-2020"
-            place="Massachusetts Institute Of Technology (MIT)"
-            info="Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial 
-                    Intelligence."
+            type="HSC - 91.8%"
+            time="2016-2017"
+            place="Margoschis Higher Secondary School, Tuticorin"
+            info="I pursued a curriculum focused on Biology and Mathematics during my schooling, delving into the intricate realms of life sciences and quantitative reasoning. This foundation honed my analytical skills and nurtured a deep appreciation for the natural world and mathematical principles."
           />
 
           <Details
-            type="Bachelor Of Science In Computer Science"
-            time="2016-2020"
-            place="Massachusetts Institute Of Technology (MIT)"
-            info="Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial 
-                    Intelligence."
+            type="SSLC - 86.8%"
+            time="2014-2015"
+            place="Margoschis Higher Secondary School, Tuticorin"
+            info="I completed my 10th standard education in the State Board curriculum, where I gained a strong academic foundation in core subjects following the state's educational guidelines."
           />
         </ul>
       </div>
