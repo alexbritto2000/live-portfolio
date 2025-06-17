@@ -183,6 +183,17 @@ const Projects = ({children, className=''}) => {
                         />
                     </div>
 
+                    <div className="col-span-12 pt-16">
+                        <FeaturedProject
+                            title="Heart Disease Prediction"
+                            img={ml}
+                            summary="Developed a predictive model using the Random Forest algorithm to detect heart disease within the application, enhancing its diagnostic capabilities. Leveraged machine learning techniques to create a pickle model for efficient and accurate predictions."
+                            link='https://github.com/alexbritto2000/heart-disease'
+                            github='https://github.com/alexbritto2000/heart-disease'
+                            type="Featured Project"
+                        />
+                    </div>
+
                 </Layout>
             </main>
         </>
