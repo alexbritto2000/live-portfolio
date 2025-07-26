@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text {
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      fill: #FFD700; /* Gold color */
+    }
+    .brackets {
+      font-size: 30px;
+      fill: #FFD700;
+    }
+  </style>
+  <rect width="64" height="64" fill="transparent"/>
+  <text x="8" y="40" class="brackets">{</text>
+  <text x="22" y="38" class="text">AB</text>
+  <text x="52" y="40" class="brackets">}</text>
+</svg>

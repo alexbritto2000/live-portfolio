@@ -17,6 +17,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`font-mont bg-light w-full dark:bg-dark min-h-screen`}>
