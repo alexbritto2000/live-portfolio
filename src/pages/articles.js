@@ -83,8 +83,16 @@ const Articles = ({children, className=''}) => {
     return (
         <>
             <Head>
-                <title>AlexBritto | Articles Page</title>
-                <meta name="description" content="any desc" />
+                <title>Alex Britto - Articles & Blog | React, Angular, Next.js Tutorials</title>
+                <meta name="description" content="Read Alex Britto's articles on React, Angular, Next.js, and web development. Tutorials on pagination components, loading screens, modal components, form validation, and more." />
+                <meta name="keywords" content="Alex Britto Articles, React Tutorials, Angular Tutorials, Next.js Tutorials, Web Development Articles, React Pagination, React Loading Screen, React Modal, Form Validation, Web Development Blog" />
+                <meta property="og:title" content="Alex Britto - Articles & Blog | React, Angular, Next.js Tutorials" />
+                <meta property="og:description" content="Read Alex Britto's articles on React, Angular, Next.js, and web development. Tutorials on pagination components, loading screens, modal components, and more." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://your-domain.com/articles" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Alex Britto - Articles & Blog | React, Angular, Next.js Tutorials" />
+                <meta name="twitter:description" content="Read Alex Britto's articles on React, Angular, Next.js, and web development." />
             </Head>
             <TransitionEffect />
 

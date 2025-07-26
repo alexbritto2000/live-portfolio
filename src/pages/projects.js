@@ -89,8 +89,16 @@ const Projects = ({children, className=''}) => {
     return (
         <>
             <Head>
-                <title>AlexBritto | Projects Page</title>
-                <meta name="description" content="any desc" />
+                <title>Alex Britto - Projects Portfolio | Full Stack Developer Projects</title>
+                <meta name="description" content="Explore Alex Britto's portfolio of web development projects. Featured projects include HireWalks, DegPeg, ML applications, and more. Built with React, Angular, Next.js, and modern web technologies." />
+                <meta name="keywords" content="Alex Britto Projects, Web Development Projects, React Projects, Angular Projects, Next.js Projects, Full Stack Projects, Portfolio Projects, HireWalks, DegPeg, ML Projects" />
+                <meta property="og:title" content="Alex Britto - Projects Portfolio | Full Stack Developer Projects" />
+                <meta property="og:description" content="Explore Alex Britto's portfolio of web development projects. Featured projects include HireWalks, DegPeg, ML applications, and more." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://your-domain.com/projects" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Alex Britto - Projects Portfolio | Full Stack Developer Projects" />
+                <meta name="twitter:description" content="Explore Alex Britto's portfolio of web development projects." />
             </Head>
             <TransitionEffect />
 

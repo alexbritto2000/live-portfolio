@@ -39,8 +39,16 @@ const About = ({children, className=''}) => {
     return (
         <>
             <Head>
-                <title>AlexBritto | About Page</title>
-                <meta name="description" content="any desc" />
+                <title>Alex Britto - About Me | Full Stack Developer & UI/UX Designer</title>
+                <meta name="description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience creating beautiful, functional digital experiences. Expert in React, Angular, Next.js, and modern web technologies." />
+                <meta name="keywords" content="Alex Britto, Full Stack Developer, UI/UX Designer, React Developer, Angular Developer, Next.js Developer, Web Developer, Frontend Developer, Backend Developer, Portfolio" />
+                <meta property="og:title" content="Alex Britto - About Me | Full Stack Developer & UI/UX Designer" />
+                <meta property="og:description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience creating beautiful, functional digital experiences." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://your-domain.com/about" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Alex Britto - About Me | Full Stack Developer & UI/UX Designer" />
+                <meta name="twitter:description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience." />
             </Head>
             <TransitionEffect />
 

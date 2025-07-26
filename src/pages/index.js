@@ -8,6 +8,7 @@ import { LinkArrow } from "@/components/Icons";
 import HireMe from "@/components/HireMe";
 import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg'
 import TransitionEffect from '@/components/TransitionEffect'
+import StructuredData from '@/components/StructuredData'
 
 export default function Home() {
   return (
@@ -20,11 +21,12 @@ export default function Home() {
         <meta property="og:title" content="Alex Britto - Full Stack Developer" />
         <meta property="og:description" content="Full Stack Developer specializing in React, Angular, Next.js, and web development. Turning vision into reality with code and design." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://your-domain.com" />
+        <meta property="og:url" content="https://alexbritto.dev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Alex Britto - Full Stack Developer" />
         <meta name="twitter:description" content="Full Stack Developer specializing in React, Angular, Next.js, and web development." />
       </Head>
+      <StructuredData type="homepage" />
       <TransitionEffect />
 
       <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
