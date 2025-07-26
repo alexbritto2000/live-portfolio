@@ -36,6 +36,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- JavaScript Resources Page -->
+  <url>
+    <loc>https://alexbritto.dev/javascript</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Resume/CV -->
   <url>
     <loc>https://alexbritto.dev/AlexBritto_CV.pdf</loc>
