@@ -48,30 +48,28 @@ const Experience = ({children, className=''}) => {
 
                 <ul className='w-full flex flex-col items-start justify-between ml-4 xs:ml-2'>
                     <Details 
-                    position="Angular Developer"
+                    position="Frontend Engineer"
                     companyLink="https://dotcod.in/"
                     company="Dotcod"
-                    time="Ang 2022 - Present"
+                    time="Aug 2022 - Present"
                     address="Bengaluru, Karnataka 560076"
-                    work="At Dotcod, I spearheaded the development of a dynamic currency conversion web application, implemented robust KYC verification systems, and engineered an intuitive online job portal application. These projects showcase my adeptness in crafting scalable, user-centric solutions that address diverse business needs while leveraging cutting-edge technologies." />
+                    work="Promoted to Frontend Engineer after 2 years of exceptional performance. Leading development of React and Next.js applications, implementing modern frontend architectures, and mentoring junior developers. Specialized in building scalable web applications with focus on performance optimization and user experience." />
+
+                    <Details 
+                    position="Junior Frontend Developer"
+                    companyLink="https://dotcod.in/"
+                    company="Dotcod"
+                    time="Aug 2022 - Aug 2024"
+                    address="Bengaluru, Karnataka 560076"
+                    work="Started as Junior Frontend Developer, quickly mastering Angular framework and contributing to multiple projects including currency conversion applications, KYC verification systems, and job portal platforms. Demonstrated strong problem-solving skills and rapid learning capabilities." />
 
                     <Details 
                     position="Angular Intern"
                     companyLink="https://www.linkedin.com/company/sabbatech/about/"
                     company="Sabbatech"
-                    time="April 2022 - Ang 2022"
+                    time="April 2022 - Aug 2022"
                     address="Chennai"
-                    work="I successfully tackled Jira tickets and mastered Angular during my tenure at sabbatech, seamlessly integrating these skills into my portfolio to demonstrate practical expertise in web development." />
-
-                    {/* <Details 
-                    position="Software Engineer"
-                    companyLink="www.google.com"
-                    company="Google"
-                    time="2022-Present"
-                    address="Mountain View"
-                    work="Google's 
-                    search engine, including improving the accuracy and relevance of search results and 
-                    developing new tools for data analysis and visualization." /> */}
+                    work="Gained foundational experience in Angular development, successfully managing Jira tickets and contributing to web development projects. Built strong foundation in modern frontend development practices and agile methodologies." />
                 </ul>
             </div>
         </div>
