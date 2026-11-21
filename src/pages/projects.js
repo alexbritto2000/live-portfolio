@@ -5,207 +5,249 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from "next/image";
 import { GithubIcon } from '@/components/Icons'
-import project1 from "../../public/images/projects/hirewalks.png"
-import degpeg from "../../public/images/projects/degpeg.png"
-import portfolio from "../../public/images/projects/portfolio.png"
-import ml from "../../public/images/projects/ml.png"
-import profilePic from "../../public/images/profile/developer-pic-2.jpg"
-import {motion} from 'framer-motion'
+import hirewalksImg from "../../public/images/projects/hirewalks.png"
+import degpegImg from "../../public/images/projects/degpeg.png"
+import portfolioImg from "../../public/images/projects/portfolio.png"
+import mlImg from "../../public/images/projects/ml.png"
+import kadayanallurImg from "../../public/images/projects/kadayanallur.png"
+import instafidoImg from "../../public/images/projects/instafido.png"
+import { motion } from 'framer-motion'
 import TransitionEffect from '@/components/TransitionEffect'
+import StructuredData from '@/components/StructuredData'
 
 const FramerImage = motion(Image);
 
-const FeaturedProject = ({type, title, summary, img, link, github}) => {
-
-    return(
-        <article className='w-full flex items-center justify-between relative rounded-br-2xl
-        rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light
-        lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4'>
-            <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark rounded-br-3xl dark:bg-light xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]' />
-
-            <Link href={link} target="_blank" className='w-1/2 cursor-pointer overflow-hidden rounded-lg lg:w-full'>
-                <FramerImage src={img} alt={title} className="w-full h-auto" 
-                whileHover={{scale: 1.05}}
-                transition={{duration:0.2}}
-                priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"/>
-            </Link>
-
-            <div className='w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6'>
-                <span className='text-primary font-medium text-xl dark:text-primaryDark xs:text-base'>{type}</span>
-                <Link href={link} target="_blank" className='hover:underline underline-offset-2'>
-                    <h2 className='my-2 w-full text-left text-4xl font-bold dark:text-light sm:text-sm'>{title}</h2>
-                </Link>
-
-                <p className='my-2 font-medium text-dark dark:text-light sm:text-sm'>{summary}</p>
-
-                <div className='mt-2 flex items-center'>
-                    {/* <Link href={github} target="_blank" className='w-10'>
-                        <GithubIcon />
-                    </Link> */}
-
-                    <Link href={link} target="_blank" className='ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold dark:bg-light dark:text-dark sm:px-4 sm-text-base'>
-                        Visit Project
-                    </Link>
-                </div>
+const FeaturedProject = ({ type, title, summary, stack, img, link = "#", github = "" }) => {
+    return (
+        <article className='w-full flex items-center justify-between relative rounded-2xl border border-solid border-dark/20 dark:border-light/20 bg-light/80 shadow-lg p-6 dark:bg-dark/80 lg:flex-col lg:p-5 xs:p-4 hover:shadow-2xl transition-all'>
+            <div className='w-1/2 cursor-pointer overflow-hidden rounded-xl lg:w-full'>
+                <FramerImage 
+                    src={img} 
+                    alt={title} 
+                    className="w-full h-auto max-h-[300px] object-cover rounded-xl" 
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.2 }}
+                    priority 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                />
             </div>
 
-        </article>
-    )
-}
+            <div className='w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-4'>
+                <span className='text-primary font-bold text-xs uppercase tracking-wider dark:text-primaryDark'>
+                    {type}
+                </span>
+                <h2 className='my-1.5 w-full text-left text-xl font-bold dark:text-light sm:text-lg'>
+                    {title}
+                </h2>
 
-const Project = ({title, type, img, link, github}) => {
-    return(
-        <article className='w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4'>
+                <p className='my-1.5 font-medium text-dark/85 dark:text-light/85 text-xs leading-relaxed'>
+                    {summary}
+                </p>
 
-            <div className='absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]' />
-            <Link href={link} target="_blank" className='w-full cursor-pointer overflow-hidden rounded-lg'>
-                <FramerImage src={img} alt={title} className="w-full h-60"
-                whileHover={{scale: 1.05}}
-                transition={{duration:0.2}} />
-            </Link>
+                {stack && (
+                    <div className='my-2 flex flex-wrap gap-1'>
+                        {stack.split(',').map((tech, i) => (
+                            <span 
+                                key={i} 
+                                className='text-[10px] font-semibold px-2 py-0.5 rounded-md bg-dark/5 text-dark dark:bg-light/10 dark:text-light border border-dark/10 dark:border-light/10'
+                            >
+                                {tech.trim()}
+                            </span>
+                        ))}
+                    </div>
+                )}
 
-            <div className='w-full flex flex-col items-start justify-between mt-4'>
-                <span className='text-primary font-medium text-xl dark:text-primaryDark lg:text-lg md:text-base'>{type}</span>
-                <Link href={link} target="_blank" className='hover:underline underline-offset-2'>
-                    <h2 className='my-2 w-full text-left tetx-3xl font-bold lg:text-2xl'>{title}</h2>
-                </Link>
+                <div className='mt-2 flex items-center gap-3'>
+                    {github && (
+                        <Link href={github} target="_blank" className='w-7 text-dark dark:text-light hover:opacity-80 transition-opacity'>
+                            <GithubIcon />
+                        </Link>
+                    )}
 
-                <div className='w-full mt-2 flex items-center justify-between'>
-                    <Link href={link} target="_blank" className='text-lg font-semibold underline md:text-base'>
-                        Visit
-                    </Link>
-
-                    {/* <Link href={github} target="_blank" className='w-8 md:w-6'>
-                        <GithubIcon />
-                    </Link> */}
+                    {link && link !== '#' && (
+                        <Link 
+                            href={link} 
+                            target="_blank" 
+                            className='rounded-xl bg-dark text-light p-1.5 px-4 text-xs font-semibold dark:bg-light dark:text-dark hover:opacity-90 transition-all'
+                        >
+                            Visit Project →
+                        </Link>
+                    )}
                 </div>
             </div>
-
         </article>
-    )
-}
+    );
+};
 
-const Projects = ({children, className=''}) => {
+const Project = ({ title, type, summary, stack, img, link = "#", github = "" }) => {
+    return (
+        <article className='w-full flex flex-col items-center justify-between rounded-2xl border border-solid border-dark/20 dark:border-light/20 bg-light/80 p-4 relative dark:bg-dark/80 xs:p-3 shadow-md hover:shadow-xl transition-all'>
+            <div className='w-full cursor-pointer overflow-hidden rounded-xl'>
+                <FramerImage 
+                    src={img} 
+                    alt={title} 
+                    className="w-full h-44 object-cover rounded-xl"
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ duration: 0.2 }} 
+                />
+            </div>
+
+            <div className='w-full flex flex-col items-start justify-between mt-3 flex-grow'>
+                <span className='text-primary font-bold text-[11px] uppercase tracking-wider dark:text-primaryDark'>
+                    {type}
+                </span>
+                <h2 className='my-1 w-full text-left text-lg font-bold dark:text-light'>
+                    {title}
+                </h2>
+
+                <p className='my-1 font-medium text-dark/80 dark:text-light/80 text-xs leading-relaxed'>
+                    {summary}
+                </p>
+
+                {stack && (
+                    <div className='my-2 flex flex-wrap gap-1'>
+                        {stack.split(',').map((tech, i) => (
+                            <span 
+                                key={i} 
+                                className='text-[10px] font-semibold px-2 py-0.5 rounded bg-dark/5 text-dark dark:bg-light/10 dark:text-light border border-dark/10 dark:border-light/10'
+                            >
+                                {tech.trim()}
+                            </span>
+                        ))}
+                    </div>
+                )}
+
+                <div className='w-full mt-2.5 flex items-center justify-between pt-2 border-t border-dark/10 dark:border-light/10'>
+                    {link && link !== '#' ? (
+                        <Link href={link} target="_blank" className='text-xs font-semibold underline text-primary dark:text-primaryDark'>
+                            Visit Project →
+                        </Link>
+                    ) : (
+                        <span className='text-[10px] font-medium text-dark/50 dark:text-light/50'>
+                            Enterprise Internal
+                        </span>
+                    )}
+
+                    {github && (
+                        <Link href={github} target="_blank" className='w-5 text-dark dark:text-light hover:opacity-80 transition-opacity'>
+                            <GithubIcon />
+                        </Link>
+                    )}
+                </div>
+            </div>
+        </article>
+    );
+};
+
+const Projects = () => {
     return (
         <>
             <Head>
-                <title>Alex Britto - Projects Portfolio | Full Stack Developer Projects</title>
-                <meta name="description" content="Explore Alex Britto's portfolio of web development projects. Featured projects include HireWalks, DegPeg, ML applications, and more. Built with React, Angular, Next.js, and modern web technologies." />
-                <meta name="keywords" content="Alex Britto Projects, Web Development Projects, React Projects, Angular Projects, Next.js Projects, Full Stack Projects, Portfolio Projects, HireWalks, DegPeg, ML Projects" />
-                <meta property="og:title" content="Alex Britto - Projects Portfolio | Full Stack Developer Projects" />
-                <meta property="og:description" content="Explore Alex Britto's portfolio of web development projects. Featured projects include HireWalks, DegPeg, ML applications, and more." />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://your-domain.com/projects" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Alex Britto - Projects Portfolio | Full Stack Developer Projects" />
-                <meta name="twitter:description" content="Explore Alex Britto's portfolio of web development projects." />
+                <title>Alex Britto - Projects | .NET Full Stack Developer Portfolio</title>
+                <meta name="description" content="Explore Alex Britto's .NET Full Stack development projects including enterprise shipping ERP (BLISS), HireWalks job portal, fintech money transfer, LMS admin portal, and Next.js portfolio." />
+                <meta name="keywords" content="Alex Britto Projects, .NET Core Projects, Entity Framework Core, SQL Server, Angular Projects, React Projects, HireWalks, BLISS ERP, Full Stack Portfolio" />
             </Head>
+            <StructuredData type="projects" />
             <TransitionEffect />
 
             <main className='w-full mb-16 flex flex-col items-center justify-center dark:text-light'>
-                <Layout className='pt-16'>
-                    <AnimatedText text="Imagination Trumps Knowledge!" className='mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl'></AnimatedText>
+                <Layout className='pt-6 sm:pt-4'>
+                    <div className="text-center mb-8">
+                        <span className="text-xs font-bold tracking-widest text-primary dark:text-primaryDark uppercase">
+                            Portfolio Showcase
+                        </span>
+                        <AnimatedText 
+                            text="Featured Enterprise Projects" 
+                            className="!text-3xl md:!text-2xl sm:!text-xl mt-1 text-center" 
+                        />
+                        <p className="text-xs font-medium text-dark/70 dark:text-light/70 max-w-xl mx-auto mt-1.5">
+                            End-to-end full stack enterprise solutions built with .NET Core, SQL Server, Entity Framework Core, Angular, and React.
+                        </p>
+                    </div>
 
-
-                    <div className='grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0'>
+                    <div className='grid grid-cols-12 gap-6 max-w-6xl mx-auto'>
+                        {/* Project 1 - BLISS Shipping ERP */}
                         <div className="col-span-12">
                             <FeaturedProject 
-                                title="Recruitment Web Application"
-                                img={project1}
-                                summary="I have experience working on a web application similar to LinkedIn for recruitment purposes at HireWalks. This project was developed during my time at DotCod, where I actively contributed to its implementation and enhancement."
+                                title="BLISS – Shipping ERP Platform"
+                                type="Enterprise ERP & Logistics • Blackstone Shipping"
+                                summary="Enterprise logistics ERP solution. Engineered .NET Core backend APIs implementing freight quotation, vessel schedules, container tracking, and cargo manifests business logic. Modeled SQL Server relational databases with Entity Framework Core migrations and optimized LINQ data access layers, consumed by responsive Angular operator dashboards."
+                                stack=".NET Core, Entity Framework Core, SQL Server, Angular, RESTful APIs, Git"
+                                img={kadayanallurImg}
+                                link='#'
+                                github=''
+                            />
+                        </div>
+
+                        {/* Project 2 - HireWalks */}
+                        <div className="col-span-6 sm:col-span-12">
+                            <Project 
+                                title="HireWalks & GTX Job Portals"
+                                type="Recruitment SaaS • Dotcod Innovation"
+                                summary="Enterprise recruitment web platform supporting end-to-end hiring workflows. Built backend logic and data models for admin/recruiter portals covering candidate pipeline tracking, interview scheduling, and offers management; developed dynamic Angular/React client screens, deployed via automated Jenkins CI/CD pipelines."
+                                stack="Angular, React, .NET Core, RESTful APIs, Jenkins, Firebase, Git"
+                                img={hirewalksImg}
                                 link='https://hirewalks.com/'
-                                github='/'
-                                type="Featured Project"
+                                github=''
                             />
                         </div>
-                        <div className="col-span-6 sm:col-span-12">
-                        <Project 
-                                title="Online Video Streaming Web Application"
-                                img={degpeg}
-                                summary="Contributed to the development of DegPeg, an online video streaming app, incorporating extensive analytics graphs using Chart.js. Although the project is currently not live, it highlights my proficiency in web development and data visualization. Executed this within DotCod, showcasing hands-on experience in real-world projects."
-                                link='/'
-                                github='/'
-                                type="Featured Project"
-                            />
-                        </div>
+
+                        {/* Project 3 - International Money Transfer */}
                         <div className="col-span-6 sm:col-span-12">
                             <Project 
-                                title="Next JS Portfolio Web Application"
-                                img={portfolio}
-                                summary=""
-                                link='/'
-                                github='/'
-                                type="Featured Project"
+                                title="International Money Transfer Platform"
+                                type="Fintech & Remittance • Dotcod Innovation"
+                                summary="Secure cross-border money transfer and currency exchange platform. Built backend services with .NET Core for currency calculation, transaction validation, and SQL Server data models. Integrated Onfido identity verification (KYC) and built an Angular frontend with Reactive Forms."
+                                stack="Angular, .NET Core, SQL Server, RESTful APIs, Onfido (KYC), Git"
+                                img={instafidoImg}
+                                link='#'
+                                github=''
                             />
                         </div>
 
-  
-                        {/* <div className="col-span-12">
-                            <FeaturedProject 
-                                title="Crypto Screener Application"
-                                img={project1}
-                                summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-                                It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-                                local currency."
-                                link='/'
-                                github='/'
-                                type="Featured Project"
-                            />
-                        </div>
+                        {/* Project 4 - LMS Admin Portal */}
                         <div className="col-span-6 sm:col-span-12">
                             <Project 
-                                title="Crypto Screener Application"
-                                img={project1}
-                                summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-                                It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-                                local currency."
-                                link='/'
-                                github='/'
-                                type="Featured Project"
+                                title="LMS Platform for Yoga Institute – Admin Portal"
+                                type="EdTech & Administration • Dotcod Innovation"
+                                summary="Administrative dashboard and learning management system. Built backend data models and .NET Core APIs powering quiz creation, curriculum scheduling, batch and lesson management, student attendance tracking, and multi-role RBAC security."
+                                stack="Angular, .NET Core, SQL Server, RESTful APIs, Git"
+                                img={degpegImg}
+                                link='#'
+                                github=''
                             />
-                        </div> */}
-                        {/* <div className="col-span-6 sm:col-span-12">
+                        </div>
+
+                        {/* Project 5 - Portfolio Website */}
+                        <div className="col-span-6 sm:col-span-12">
                             <Project 
-                                title="Crypto Screener Application"
-                                img={project1}
-                                summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-                                It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-                                local currency."
-                                link='/'
-                                github='/'
-                                type="Featured Project"
+                                title="Modern Developer Portfolio & Interview Hub"
+                                type="Personal Project"
+                                summary="Personal developer portfolio built with Next.js, React, and Tailwind CSS. Features Server-Side Rendering (SSR), dark/light theme switching, technical interview Q&A repository, interactive web resume, and downloadable PDF CV."
+                                stack="Next.js, React, Tailwind CSS, Framer Motion"
+                                img={portfolioImg}
+                                link='https://alexbritto-portfolio.vercel.app'
+                                github='https://github.com/alexbritto2000'
                             />
-                        </div> */}
+                        </div>
+
+                        {/* Project 6 - Machine Learning */}
+                        <div className="col-span-6 sm:col-span-12">
+                            <Project 
+                                title="Heart Disease Diagnostic Predictive Model"
+                                type="Healthcare AI & Machine Learning"
+                                summary="Predictive diagnostic machine learning model using the Random Forest classification algorithm to detect heart disease indicators from clinical health metrics. Serialized the trained model using Python pickle for fast, reliable inference in diagnostic workflows."
+                                stack="Python, Machine Learning, Random Forest, Scikit-learn, Pickle"
+                                img={mlImg}
+                                link='https://github.com/alexbritto2000/heart-disease'
+                                github='https://github.com/alexbritto2000/heart-disease'
+                            />
+                        </div>
                     </div>
-
-                    <AnimatedText text="Machine Learning" className='mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl pt-10'></AnimatedText>
-
-                    <div className="col-span-12">
-                        <FeaturedProject 
-                            title="Heart Disease Prediction"
-                            img={ml}
-                            summary="Developed a predictive model using the Random Forest algorithm to detect heart disease within the application, enhancing its diagnostic capabilities. Leveraged machine learning techniques to create a pickle model for efficient and accurate predictions."
-                            link='https://github.com/alexbritto2000/heart-disease'
-                            github='https://github.com/alexbritto2000/heart-disease'
-                            type="Featured Project"
-                        />
-                    </div>
-
-                    <div className="col-span-12 pt-16">
-                        <FeaturedProject
-                            title="Heart Disease Prediction"
-                            img={ml}
-                            summary="Developed a predictive model using the Random Forest algorithm to detect heart disease within the application, enhancing its diagnostic capabilities. Leveraged machine learning techniques to create a pickle model for efficient and accurate predictions."
-                            link='https://github.com/alexbritto2000/heart-disease'
-                            github='https://github.com/alexbritto2000/heart-disease'
-                            type="Featured Project"
-                        />
-                    </div>
-
                 </Layout>
             </main>
         </>
-    )
-}
+    );
+};
 
-export default Projects
+export default Projects;

@@ -3,71 +3,100 @@ import Layout from "@/components/Layout";
 import Image from "next/image";
 import profilePic from "../../public/images/profile/Img.svg";
 import AnimatedText from "@/components/AnimatedText";
-import Link from 'next/link'
-import { LinkArrow } from "@/components/Icons";
+import Link from 'next/link';
 import HireMe from "@/components/HireMe";
-import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg'
-import TransitionEffect from '@/components/TransitionEffect'
-import StructuredData from '@/components/StructuredData'
+import TransitionEffect from '@/components/TransitionEffect';
+import StructuredData from '@/components/StructuredData';
 
 export default function Home() {
+  const techPills = [
+    "C#", ".NET Core 8", "ASP.NET Web API", "Entity Framework Core",
+    "SQL Server", "Angular", "React", "TypeScript", "Jenkins CI/CD"
+  ];
+
   return (
     <>
       <Head>
-        <title>Alex Britto - Full Stack Developer</title>
-        <meta name="description" content="Alex Britto - Full Stack Developer specializing in React, Angular, Next.js, and web development. Turning vision into reality with code and design." />
-        <meta name="keywords" content="Alex Britto, Full Stack Developer, React, Angular, Next.js, Web Development, Portfolio" />
-        <meta name="author" content="Alex Britto" />
-        <meta property="og:title" content="Alex Britto - Full Stack Developer" />
-        <meta property="og:description" content="Full Stack Developer specializing in React, Angular, Next.js, and web development. Turning vision into reality with code and design." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://alexbritto.dev" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Alex Britto - Full Stack Developer" />
-        <meta name="twitter:description" content="Full Stack Developer specializing in React, Angular, Next.js, and web development." />
+        <title>Alex Britto - .NET Full Stack Developer | .NET Core, Angular &amp; React</title>
+        <meta name="description" content="Alex Britto - .NET Full Stack Developer with 4+ years of experience building scalable backend systems with .NET Core, SQL Server, and EF Core, paired with Angular and React frontends." />
+        <meta name="keywords" content="Alex Britto, .NET Full Stack Developer, .NET Core, C#, ASP.NET Core Web API, Entity Framework Core, SQL Server, Angular, React, RESTful APIs, Portfolio" />
       </Head>
       <StructuredData type="homepage" />
       <TransitionEffect />
 
-      <main className="flex items-center text-dark w-full min-h-screen dark:text-light">
-        <Layout className="pt-0 md:pt-16 sm:pt-8">
-          <div className="flex items-center justify-between w-full lg:flex-col">
-            <div className="w-1/2 md:w-full">
-              <Image
-                src={profilePic}
-                alt="AlexBritto"
-                className="w-full h-auto lg:hidden md:inline-block md:w-full px-10"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-              />
+      <main className="flex items-center text-dark w-full min-h-[calc(100vh-80px)] dark:text-light py-4">
+        <Layout className="pt-2 md:pt-4">
+          <div className="flex items-center justify-between w-full lg:flex-col gap-8">
+            {/* Visual Hero Illustration */}
+            <div className="w-1/2 md:w-full flex justify-center">
+              <div className="relative max-w-md w-full">
+                <Image
+                  src={profilePic}
+                  alt="Alex Britto - .NET Full Stack Developer"
+                  className="w-full h-auto drop-shadow-2xl"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                />
+              </div>
             </div>
 
+            {/* Hero Copy */}
             <div className="w-1/2 flex flex-col items-center self-center lg:w-full lg:text-center">
+              <div className="self-start lg:self-center mb-2.5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary/10 text-primary dark:bg-primaryDark/10 dark:text-primaryDark border border-primary/20">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  4+ Years Experience • .NET Full Stack Developer
+                </span>
+              </div>
+
               <AnimatedText
-                text="Turning Vision Into Reality With Code And Design."
-                className="!text-6xl !text-left xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
+                text="Engineering Scalable Systems With .NET &amp; Modern Frontends."
+                className="!text-3xl md:!text-2xl sm:!text-xl leading-snug !text-left lg:!text-center"
               />
-              <p className="my-4 text-base font-medium md:text-sm sm:text-xs">
-                As a skilled Frontend Engineer, I am dedicated to turning
-                ideas into innovative web applications. Explore my latest
-                projects and articles, showcasing my expertise in React, Angular, Next.js, and
-                modern frontend development.
+
+              <p className="my-3 text-xs sm:text-xs font-medium text-dark/85 dark:text-light/85 leading-relaxed text-left lg:text-center">
+                Specialized in building high-throughput enterprise systems using <strong>.NET Core, SQL Server, and Entity Framework Core</strong>, paired with reactive <strong>Angular and React</strong> client applications. Proven delivery across shipping ERP (BLISS), fintech international remittance, recruiter portals, and automated Jenkins CI/CD pipelines.
               </p>
-              <div className="flex items-center self-start mt-2 lg:self-center">
+
+              {/* Tech stack badge pills */}
+              <div className="flex items-center flex-wrap gap-1.5 mb-5 self-start lg:self-center justify-start lg:justify-center">
+                {techPills.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="text-[11px] font-semibold px-2.5 py-0.5 rounded-lg bg-dark/5 dark:bg-light/10 text-dark dark:text-light border border-dark/10 dark:border-light/10"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center self-start mt-1 lg:self-center flex-wrap gap-2.5">
                 <Link
-                  href="/AlexBritto_CV.pdf"
-                  target={"_blank"}
-                  className="flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border-2 border-solid border-transparent hover:border-dark dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light md:p-2 md:px-4 md:text-base"
-                  download={true}
+                  href="/Alex_Britto_Resume.pdf"
+                  download="Alex_Britto_Resume.pdf"
+                  target="_blank"
+                  className="flex items-center bg-dark text-light p-2 px-4 rounded-xl text-xs font-semibold hover:bg-light hover:text-dark border-2 border-solid border-dark dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light shadow-md transition-all"
                 >
-                  Resume <LinkArrow className={"w-6 ml-1"} />
+                  📥 Download Resume
                 </Link>
                 <Link
-                  href="mailto:alexbritto17@outlook.com "
-                  target={"_blank"}
-                  className="ml-4 text-lg font-medium capitalize text-dark underline dark:text-light md:text-base"
+                  href="/resume"
+                  className="flex items-center bg-transparent text-dark dark:text-light p-2 px-4 rounded-xl text-xs font-semibold hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark border-2 border-solid border-dark dark:border-light transition-all"
                 >
-                  Contact
+                  View Resume
+                </Link>
+                <Link
+                  href="/interview"
+                  className="flex items-center bg-primary text-light dark:bg-primaryDark dark:text-dark p-2 px-4 rounded-xl text-xs font-semibold hover:opacity-90 transition-all shadow-md"
+                >
+                  Interview Q&amp;A 💡
+                </Link>
+                <Link
+                  href="mailto:alexbritto099@gmail.com"
+                  className="text-xs font-semibold capitalize text-dark underline dark:text-light ml-2 hover:text-primary dark:hover:text-primaryDark"
+                >
+                  Contact Me
                 </Link>
               </div>
             </div>
@@ -75,10 +104,6 @@ export default function Home() {
         </Layout>
 
         <HireMe />
-
-        <div className="absolute right-8 bottom-8 inline-block w-24 md:hidden">
-          <Image src={lightBulb} alt="Alexbritto" className="w-full"></Image>
-        </div>
       </main>
     </>
   );

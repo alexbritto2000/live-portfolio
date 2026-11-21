@@ -9,107 +9,152 @@ import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 import Education from '@/components/Education'
 import TransitionEffect from '@/components/TransitionEffect'
+import Link from 'next/link'
 
-const AnimatedNumbers = ({value}) => {
-const ref = useRef(null);
+const AnimatedNumbers = ({ value }) => {
+  const ref = useRef(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: 2500 });
+  const isInView = useInView(ref, { once: true });
 
-const motionValue = useMotionValue(0);
-const springValue = useSpring(motionValue, { duration: 3000 })
-const isInView = useInView(ref, {once: true});
-
-useEffect(()=>{
-    if(isInView){
-        motionValue.set(value);
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
     }
-}, [isInView, value, motionValue])
+  }, [isInView, value, motionValue]);
 
-useEffect(() => {
+  useEffect(() => {
     springValue.on("change", (latest) => {
-        console.log(latest)
-        if(ref.current && latest.toFixed(0) <= value){
-            ref.current.textContent = latest.toFixed(0);
-        }
-    })
-}, [springValue,value])
+      if (ref.current && Number(latest.toFixed(0)) <= value) {
+        ref.current.textContent = latest.toFixed(0);
+      }
+    });
+  }, [springValue, value]);
 
-    return <span ref={ref}></span>
-}
+  return <span ref={ref}></span>;
+};
 
-const About = ({children, className=''}) => {
-    return (
-        <>
-            <Head>
-                <title>Alex Britto - About Me | Full Stack Developer & UI/UX Designer</title>
-                <meta name="description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience creating beautiful, functional digital experiences. Expert in React, Angular, Next.js, and modern web technologies." />
-                <meta name="keywords" content="Alex Britto, Full Stack Developer, UI/UX Designer, React Developer, Angular Developer, Next.js Developer, Web Developer, Frontend Developer, Backend Developer, Portfolio" />
-                <meta property="og:title" content="Alex Britto - About Me | Full Stack Developer & UI/UX Designer" />
-                <meta property="og:description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience creating beautiful, functional digital experiences." />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://your-domain.com/about" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Alex Britto - About Me | Full Stack Developer & UI/UX Designer" />
-                <meta name="twitter:description" content="Learn more about Alex Britto, a passionate Full Stack Developer and UI/UX Designer with 3+ years of experience." />
-            </Head>
-            <TransitionEffect />
+const About = () => {
+  return (
+    <>
+      <Head>
+        <title>Alex Britto - About Me | .NET Full Stack Developer</title>
+        <meta
+          name="description"
+          content="Learn more about Alex Britto, a .NET Full Stack Developer with 4+ years of experience building enterprise systems with .NET Core, SQL Server, Entity Framework Core, Angular, and React."
+        />
+        <meta
+          name="keywords"
+          content="Alex Britto, .NET Core Developer, Full Stack Developer, Entity Framework Core, SQL Server, Angular Developer, React Developer, C#, Web API, Portfolio"
+        />
+      </Head>
+      <TransitionEffect />
 
-            <main className='flex w-full flex-col items-center justify-center dark:text-light'>
-                <Layout className='pt-16'>
-                    <AnimatedText text="Passion Fuels Purpose!" className='mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8'/>
-                    <div className='grid w-full grid-cols-8 gap-16 sm:gap-8'>
-                        <div className='col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8'>
-                            <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">Biography</h2>
-                            <p className='font-medium'>
-                            Hi, I'm Alex Britto, a Frontend Engineer with a passion for creating beautiful, functional, and user-centered digital experiences. With 3+ years of experience in the field, I specialize in React, Next.js, and Angular development. I am always looking for new and innovative ways to bring my clients' visions to life.
-                            </p>
+      <main className="flex w-full flex-col items-center justify-center dark:text-light">
+        <Layout className="pt-6 sm:pt-4">
+          <AnimatedText
+            text="Passion Fuels Purpose!"
+            className="!text-3xl md:!text-2xl sm:!text-xl mb-6 text-center"
+          />
 
-                            <p className='my-4 font-medium'>
-                            I believe that design is about more than just making things look pretty – it's about solving problems and creating intuitive, enjoyable experiences for users. 
-                            </p>
+          {/* Bio + Image + Quick Stats Grid */}
+          <div className="grid w-full grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
+            {/* Biography */}
+            <div className="col-span-6 lg:col-span-7 md:col-span-12 flex flex-col items-start justify-start">
+              <span className="text-xs font-bold tracking-widest text-primary dark:text-primaryDark uppercase mb-1">
+                About Alex Britto
+              </span>
+              <h2 className="mb-3 text-xl font-bold text-dark dark:text-light">
+                Enterprise .NET &amp; Modern Frontend Engineer
+              </h2>
+              <p className="font-medium text-dark/90 dark:text-light/90 leading-relaxed text-xs sm:text-xs">
+                Hi, I&apos;m <strong>Alex Britto</strong>, a dedicated <strong>.NET Full Stack Developer</strong> with <strong>4+ years of experience</strong> architecting and implementing backend services using <strong>.NET Core, SQL Server, and Entity Framework Core</strong>, paired with dynamic <strong>Angular and React</strong> frontends.
+              </p>
 
-                            <p className='font-medium'>
-                            Whether I'm working on a website, mobile app, or other digital product, I bring my commitment to design excellence and user-centered thinking to every project I work on. I look forward to the opportunity to bring my skills and passion to your next project.
-                            </p>
+              <p className="my-2.5 font-medium text-dark/90 dark:text-light/90 leading-relaxed text-xs sm:text-xs">
+                Across Blackstone Shipping and Dotcod Innovation, I have engineered solutions for enterprise shipping ERPs (BLISS), international currency transfer platforms, recruitment tracking portals (HireWalks &amp; GTX), and learning management systems. My core strength lies in designing normalized relational databases, high-performance LINQ data layers, secure RESTful Web APIs, and automated Jenkins CI/CD pipelines.
+              </p>
 
-                        </div>
+              <p className="font-medium text-dark/90 dark:text-light/90 leading-relaxed text-xs sm:text-xs">
+                I believe great software is defined by clean architecture, SOLID principles, high concurrency resilience, and intuitive user experiences.
+              </p>
 
-                        <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8 '>
-                            <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light' />
-                                <Image src={profilePic} alt="AlexBritto" className="w-full h-auto rounded-2xl" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                        </div>
+              <div className="mt-4 flex items-center gap-3 flex-wrap">
+                <Link
+                  href="/Alex_Britto_Resume.pdf"
+                  download="Alex_Britto_Resume.pdf"
+                  target="_blank"
+                  className="flex items-center bg-dark text-light p-2 px-4 rounded-lg text-xs font-semibold hover:bg-light hover:text-dark border-2 border-solid border-dark dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light transition-all shadow-sm"
+                >
+                  📥 Download Resume
+                </Link>
+                <Link
+                  href="/resume"
+                  className="text-xs font-semibold underline text-primary dark:text-primaryDark"
+                >
+                  View Online Resume →
+                </Link>
+                <Link
+                  href="/interview"
+                  className="text-xs font-semibold underline text-primary dark:text-primaryDark ml-2"
+                >
+                  Interview Q&amp;A 💡
+                </Link>
+              </div>
+            </div>
 
+            {/* Profile Image */}
+            <div className="col-span-3 lg:col-span-5 md:col-span-12 flex justify-center">
+              <div className="relative w-full max-w-xs rounded-2xl border-2 border-solid border-dark bg-light p-3 dark:bg-dark dark:border-light shadow-xl">
+                <div className="absolute top-0 -right-2 -z-10 w-[102%] h-[103%] rounded-[1.5rem] bg-dark dark:bg-light" />
+                <Image
+                  src={profilePic}
+                  alt="Alex Britto"
+                  className="w-full h-auto rounded-xl object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+            </div>
 
-                        <div className="col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:order-3">
-                            <div className='flex flex-col items-end justify-center xl:items-center'>
-                                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                                    <AnimatedNumbers value={10}/>+
-                                </span>
-                                <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75 xl:text-center md:text-lg sm:text-base xs:text-sm'>satisfied clients</h2>
-                            </div>
+            {/* Stats Cards Column */}
+            <div className="col-span-3 lg:col-span-12 flex flex-col justify-between gap-3 md:flex-row md:flex-wrap">
+              <div className="p-4 rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-center flex-1 min-w-[130px]">
+                <span className="block text-4xl font-bold text-primary dark:text-primaryDark">
+                  <AnimatedNumbers value={4} />+
+                </span>
+                <span className="text-[11px] font-semibold capitalize text-dark/75 dark:text-light/75 mt-1 block">
+                  Years Experience
+                </span>
+              </div>
 
-                            <div className='flex flex-col items-end justify-center xl:items-center'>
-                                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                                    <AnimatedNumbers value={10}/>+
-                                </span>
-                                <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75 xl:text-center md:text-lg sm:text-base xs:text-sm'>projects completed</h2>
-                            </div>
+              <div className="p-4 rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-center flex-1 min-w-[130px]">
+                <span className="block text-4xl font-bold text-dark dark:text-light">
+                  <AnimatedNumbers value={15} />+
+                </span>
+                <span className="text-[11px] font-semibold capitalize text-dark/75 dark:text-light/75 mt-1 block">
+                  Projects &amp; Modules
+                </span>
+              </div>
 
-                            <div className='flex flex-col items-end justify-center xl:items-center'>
-                                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                                    <AnimatedNumbers value={3}/>+
-                                </span>
-                                <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75 xl:text-center md:text-lg sm:text-base xs:text-sm'>years of experience</h2>
-                            </div>
-                        </div>
+              <div className="p-4 rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-center flex-1 min-w-[130px]">
+                <span className="block text-4xl font-bold text-dark dark:text-light">
+                  <AnimatedNumbers value={10} />+
+                </span>
+                <span className="text-[11px] font-semibold capitalize text-dark/75 dark:text-light/75 mt-1 block">
+                  Platforms &amp; Clients
+                </span>
+              </div>
+            </div>
+          </div>
 
-                    </div>
-                
-                <Skills />
-                <Experience />
-                <Education />
-                </Layout>
-            </main>
-        </>
-    )
-}
+          <Skills />
+          <Experience />
+          <Education />
+        </Layout>
+      </main>
+    </>
+  );
+};
 
-export default About
+export default About;

@@ -1,46 +1,135 @@
 import React from "react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 
-const Skill = ({name,x,y}) => {
-    return(
-        <motion.div className="flex items-center justify-center rounded-full font-semibold bg-dark text-light py-3 px-6 shadow-dark cursor-pointer absolute dark:text-dark dark:bg-light lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3 xs:bg-transparent xs:dark:bg-transparent xs:text-dark xs:dark:text-light xs:font-bold"
-        whileHover={{scale:1.05}}
-        initial={{x:0,y:0}}
-        whileInView={{ x:x, y:y, transition: {duration: 1.5} }}
-        transition={{duration: 1.5}}
-        viewport={{once:true}}>
-            {name}
-        </motion.div>
-    )
-}
-
-const Skills = ({ children, className = "" }) => {
+const SkillBadge = ({ name, level }) => {
   return (
-    <>
-      <h2 className="font-bold text-8xl mt-64 w-full text-center md:text-6xl md:mt-32">Skills</h2>
-      <div className="w-full h-screen relative flex items-center justify-center rounded-full bg-circularLight dark:bg-circularDark lg:h-[80vh] sm:h-[60vh] xs:h-[50vh] 
-      lg:bg-circularLightLg lg:dark:bg-circularDarkLg 
-      md:bg-circularLightMd md:dark:bg-circularDarkmd 
-      sm:bg-circularLightSm sm:dark:bg-circularDarkSm">
-        <motion.div className="flex items-center justify-center rounded-full font-semibold bg-dark text-light p-8 shadow-dark cursor-pointer dark:text-dark dark:bg-light lg:p-6 md:p-4 xs:text-xs xs:p-2"
-        whileHover={{scale:1.05}}>
-            Web
-        </motion.div>
+    <motion.div
+      whileHover={{ scale: 1.05, y: -2 }}
+      className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:border-primary/50 dark:hover:border-primaryDark/50 transition-all cursor-default"
+    >
+      <span className="font-semibold text-xs text-dark dark:text-light">{name}</span>
+      {level && (
+        <span className="text-[10px] font-medium text-primary dark:text-primaryDark ml-2 px-1.5 py-0.5 rounded bg-primary/10 dark:bg-primaryDark/10">
+          {level}
+        </span>
+      )}
+    </motion.div>
+  );
+};
 
-        <Skill name="HTML" x="-25vw" y="2vw" />
-        <Skill name="CSS" x="-5vw" y="-10vw" />
-        <Skill name="Javascript" x="20vw" y="6vw" />
-        <Skill name="AngularJS" x="0vw" y="12vw" />
-        <Skill name="NextJS" x="-20vw" y="-15vw" />
-        <Skill name="Git" x="16vw" y="-19vw" />
-        <Skill name="Web Design" x="32vw" y="-5vw" />
-        <Skill name="Figma" x="0vw" y="-20vw" />
-        <Skill name="Firebase" x="-25vw" y="18vw" />
-        <Skill name="Tailwind CSS" x="18vw" y="18vw" />
-        <Skill name="Bootstrap" x="15vw" y="-3vw" />
-        <Skill name="Angular Material" x="-2vw" y="21vw" />
+const SkillCategoryCard = ({ title, icon, description, skills, delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="relative rounded-2xl border border-solid border-dark/20 dark:border-light/20 bg-light/80 dark:bg-dark/80 p-5 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
+    >
+      <div>
+        <div className="flex items-center gap-2.5 mb-2.5">
+          <span className="text-xl p-2 rounded-xl bg-primary/10 dark:bg-primaryDark/10 text-primary dark:text-primaryDark">
+            {icon}
+          </span>
+          <div>
+            <h3 className="text-lg font-bold text-dark dark:text-light">{title}</h3>
+            <p className="text-[11px] text-dark/70 dark:text-light/70">{description}</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-1 gap-2 mt-3">
+          {skills.map((skill, index) => (
+            <SkillBadge key={index} name={skill.name} level={skill.level} />
+          ))}
+        </div>
       </div>
-    </>
+    </motion.div>
+  );
+};
+
+const Skills = () => {
+  const skillCategories = [
+    {
+      title: "Backend & Core",
+      icon: "⚡",
+      description: "High-throughput APIs & business logic",
+      skills: [
+        { name: "C#", level: "Expert" },
+        { name: ".NET Core / .NET 8", level: "Expert" },
+        { name: "ASP.NET Core Web API", level: "Expert" },
+        { name: "RESTful API Design", level: "Advanced" },
+        { name: "LINQ & Async/Await", level: "Expert" },
+        { name: "Clean Architecture", level: "Advanced" }
+      ]
+    },
+    {
+      title: "Database & ORM",
+      icon: "🗄️",
+      description: "Relational data modeling & optimization",
+      skills: [
+        { name: "SQL Server (T-SQL)", level: "Advanced" },
+        { name: "Entity Framework Core", level: "Expert" },
+        { name: "Stored Procedures", level: "Advanced" },
+        { name: "Code-First Migrations", level: "Expert" },
+        { name: "Query Optimization", level: "Advanced" },
+        { name: "Indexes & Transactions", level: "Advanced" }
+      ]
+    },
+    {
+      title: "Modern Frontend",
+      icon: "🎨",
+      description: "Reactive, responsive user interfaces",
+      skills: [
+        { name: "Angular", level: "Advanced" },
+        { name: "React & Next.js", level: "Advanced" },
+        { name: "TypeScript", level: "Expert" },
+        { name: "Reactive Forms", level: "Expert" },
+        { name: "RxJS Observables", level: "Advanced" },
+        { name: "Tailwind CSS & SCSS", level: "Advanced" }
+      ]
+    },
+    {
+      title: "DevOps & Tools",
+      icon: "🛠️",
+      description: "CI/CD pipelines & team workflows",
+      skills: [
+        { name: "Jenkins CI/CD", level: "Advanced" },
+        { name: "Git & GitHub", level: "Expert" },
+        { name: "Bitbucket", level: "Advanced" },
+        { name: "Firebase", level: "Proficient" },
+        { name: "Postman API Testing", level: "Advanced" },
+        { name: "Agile / Jira", level: "Advanced" }
+      ]
+    }
+  ];
+
+  return (
+    <section className="mt-16 md:mt-10 w-full">
+      <div className="text-center mb-8">
+        <span className="text-xs font-bold tracking-widest text-primary dark:text-primaryDark uppercase">
+          Core Competencies
+        </span>
+        <h2 className="font-bold text-3xl md:text-2xl text-center mt-1 mb-2 text-dark dark:text-light">
+          Technical Skills
+        </h2>
+        <p className="text-xs font-medium text-dark/70 dark:text-light/70 max-w-xl mx-auto">
+          Production-proven full stack engineering across enterprise backends, scalable databases, and reactive frontend architectures.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-1 gap-5 w-full max-w-6xl mx-auto">
+        {skillCategories.map((cat, idx) => (
+          <SkillCategoryCard
+            key={idx}
+            title={cat.title}
+            icon={cat.icon}
+            description={cat.description}
+            skills={cat.skills}
+            delay={idx * 0.08}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 

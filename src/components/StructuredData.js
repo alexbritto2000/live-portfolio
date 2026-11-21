@@ -6,46 +6,45 @@ const StructuredData = ({ type = 'homepage' }) => {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Alex Britto",
-      "jobTitle": "Full Stack Developer",
-      "description": "Full Stack Developer and UI/UX Designer with expertise in React, Angular, Next.js, and modern web technologies.",
-      "url": "https://alexbritto.dev",
+      "jobTitle": ".NET Full Stack Developer",
+      "description": "Full Stack Developer with 4+ years of experience building enterprise systems with .NET Core, SQL Server, Entity Framework Core, Angular, and React.",
+      "url": "https://alexbritto-portfolio.vercel.app",
+      "email": "alexbritto099@gmail.com",
       "sameAs": [
-        "https://github.com/alexbritto",
-        "https://linkedin.com/in/alexbritto",
-        "https://twitter.com/alexbritto"
+        "https://github.com/alexbritto2000",
+        "https://linkedin.com/in/alexbritto2000"
       ],
       "knowsAbout": [
-        "React.js",
+        "C#",
+        ".NET Core",
+        "ASP.NET Core Web API",
+        "Entity Framework Core",
+        "SQL Server",
+        "T-SQL",
         "Angular",
-        "Next.js",
-        "JavaScript",
+        "React",
         "TypeScript",
-        "Node.js",
-        "Web Development",
-        "UI/UX Design",
-        "Full Stack Development"
+        "JavaScript",
+        "Jenkins CI/CD",
+        "RESTful API Design",
+        "LINQ"
       ],
       "hasOccupation": {
         "@type": "Occupation",
-        "name": "Full Stack Developer",
-        "description": "Develops web applications using modern technologies"
+        "name": ".NET Full Stack Developer",
+        "description": "Designs and develops enterprise backend services and responsive client web applications."
       }
     };
 
     const websiteData = {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Alex Britto - Full Stack Developer Portfolio",
-      "url": "https://alexbritto.dev",
-      "description": "Portfolio website of Alex Britto, a Full Stack Developer and UI/UX Designer",
+      "name": "Alex Britto - .NET Full Stack Developer Portfolio",
+      "url": "https://alexbritto-portfolio.vercel.app",
+      "description": "Portfolio website of Alex Britto, a .NET Full Stack Developer specializing in .NET Core, SQL Server, Angular, and React",
       "author": {
         "@type": "Person",
         "name": "Alex Britto"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://alexbritto.dev/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
       }
     };
 
@@ -57,8 +56,8 @@ const StructuredData = ({ type = 'homepage' }) => {
         "@type": "Person",
         "name": "Alex Britto"
       },
-      "description": "Portfolio showcasing web development projects and articles",
-      "url": "https://alexbritto.dev"
+      "description": "Portfolio showcasing .NET Core enterprise ERP, fintech, recruitment portals, and interview resources",
+      "url": "https://alexbritto-portfolio.vercel.app"
     };
 
     switch (type) {
@@ -70,26 +69,32 @@ const StructuredData = ({ type = 'homepage' }) => {
         return [baseData, {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "name": "Alex Britto Projects",
-          "description": "Portfolio of web development projects",
+          "name": "Alex Britto Enterprise Projects",
+          "description": "Portfolio of .NET Core, Angular, and React enterprise applications",
           "itemListElement": [
             {
               "@type": "ListItem",
               "position": 1,
-              "name": "HireWalks",
-              "description": "Web application project"
+              "name": "BLISS – Shipping ERP Platform",
+              "description": ".NET Core and Angular ERP system for Blackstone Shipping"
             },
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "DegPeg",
-              "description": "Web development project"
+              "name": "HireWalks & GTX Job Portals",
+              "description": "Recruitment web platform built with .NET Core, Angular, React, and Jenkins"
             },
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "ML Projects",
-              "description": "Machine Learning applications"
+              "name": "International Money Transfer Platform",
+              "description": "Fintech currency conversion and transaction platform"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "LMS Platform for Yoga Institute",
+              "description": "Admin portal for learning management system"
             }
           ]
         }];
@@ -97,29 +102,12 @@ const StructuredData = ({ type = 'homepage' }) => {
         return [baseData, {
           "@context": "https://schema.org",
           "@type": "Blog",
-          "name": "Alex Britto Articles",
-          "description": "Articles about React, Angular, Next.js, and web development",
+          "name": "Alex Britto Technical Resources & Interview Prep",
+          "description": "In-depth tutorials and interview preparation for .NET, C#, SQL Server, Angular, and JavaScript",
           "author": {
             "@type": "Person",
             "name": "Alex Britto"
-          },
-          "blogPost": [
-            {
-              "@type": "BlogPosting",
-              "headline": "Build A Custom Pagination Component In Reactjs From Scratch",
-              "description": "Learn how to build a custom pagination component in ReactJS from scratch"
-            },
-            {
-              "@type": "BlogPosting",
-              "headline": "Create Loading Screen In React JS",
-              "description": "Tutorial on creating loading screens in React applications"
-            },
-            {
-              "@type": "BlogPosting",
-              "headline": "Create Modal Component In React Using React Portals",
-              "description": "Guide to creating modal components using React Portals"
-            }
-          ]
+          }
         }];
       default:
         return [baseData];
@@ -138,4 +126,4 @@ const StructuredData = ({ type = 'homepage' }) => {
   );
 };
 
-export default StructuredData; 
+export default StructuredData;
